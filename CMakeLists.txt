@@ -33,32 +33,11 @@ find_package(gflags CONFIG REQUIRED)
 hunter_add_package(rocksdb)
 find_package(RocksDB CONFIG REQUIRED)
 
-hunter_add_package(Beast)
-find_package(Beast CONFIG REQUIRED)
-
-hunter_add_package(Boost COMPONENTS  thread filesystem)
-find_package(Boost CONFIG REQUIRED thread filesystem)
-
-hunter_add_package(Boost COMPONENTS program_options)
-find_package(Boost CONFIG REQUIRED program_options)
-
-hunter_add_package(Boost COMPONENTS filesystem log system thread)
-find_package(Boost CONFIG REQUIRED filesystem log log_setup system thread)
-
-hunter_add_package(Boost COMPONENTS log thread system)
-find_package(Boost CONFIG REQUIRED log thread system)
+hunter_add_package(Boost COMPONENTS log filesystem system chrono thread regex date_time atomic program_options)
+find_package(Boost CONFIG REQUIRED log log_setup filesystem system chrono thread regex date_time atomic program_options)
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
-
-hunter_add_package(Boost COMPONENTS program_options
-        thread
-        filesystem
-        )
-find_package(Boost CONFIG REQUIRED program_options
-        thread
-        filesystem
-        )
 
 add_library(${PROJECT_NAME} STATIC
   # enum your files and delete this comment
@@ -78,15 +57,20 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         "$<INSTALL_INTERFACE:include>"
 )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC
-        RocksDB::rocksdb
+target_link_libraries(${PROJECT_NAME}
         Boost::log_setup
         Boost::log
-        Boost::thread
         Boost::filesystem
+        Boost::chrono
+        Boost::thread
+        Boost::regex
+        Boost::date_time
+        Boost::atomic
         Boost::system
         Boost::program_options
-        Beast::Beast)
+        Boost::boost
+        RocksDB::rocksdb
+        )
 target_link_libraries(demo ${PROJECT_NAME})
 
 if(BUILD_TESTS)
