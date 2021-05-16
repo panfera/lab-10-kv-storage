@@ -48,11 +48,14 @@ int main(int argc, char* argv[]) {
   output =
       (vm.count("output")) ? vm["output"].as<std::string>() : "_storage.db";
   input = argv[argc - 1];
+  try {
+    PersistentStorage a(input, output, log_level, thread_count);
 
-  PersistentStorage a(input, output, log_level, thread_count);
+    std::cout << a;
+  }
+  catch (...){
 
-  std::cout << a;
-
+  }
   return 0;
 }
 
