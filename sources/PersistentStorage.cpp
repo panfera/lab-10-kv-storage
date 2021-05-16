@@ -16,6 +16,7 @@ using rocksdb::Iterator;
 using rocksdb::ColumnFamilyHandle;
 
 std::atomic<size_t> count = 0;
+
 PersistentStorage::PersistentStorage(
     const std::string& path_to_db_from, const std::string& path_to_db_to,
     logging::trivial::severity_level& log_level, size_t& thread_count)
