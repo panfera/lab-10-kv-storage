@@ -9,7 +9,13 @@
 #include <string>
 #include "PicoSHA2/picosha2.h"
 
-using namespace rocksdb;
+//using namespace rocksdb;
+using rocksdb::DB;
+using rocksdb::Status;
+using rocksdb::DBOptions;
+using rocksdb::Iterator;
+using rocksdb::ColumnFamilyHandle;
+
 std::atomic<size_t> count = 0;
 PersistentStorage::PersistentStorage(
     const std::string& path_to_db_from, const std::string& path_to_db_to,
