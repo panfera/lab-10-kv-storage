@@ -1,5 +1,5 @@
 //
-// Created by hacker on 5/4/21.
+// Copyright [2021] <pan_fera>
 //
 
 #include "Creator.hpp"
@@ -26,7 +26,6 @@ inline void create_random_values(Creator* creator){
       i <= static_cast<size_t>
       (random_int(creator->get_column_families_names_size(), max_rows));
       ++i){
-    //creator->set_values("value" + std::to_string(i));
     creator->set_values(std::to_string(random_int(0,30)));
   }
 }
@@ -142,6 +141,8 @@ Creator::~Creator() {
   for (auto handle : _handles) {
     _db_ptr->DestroyColumnFamilyHandle(handle);
   }
-  _db_ptr->Close();
-  delete _db_ptr;
-}
+  if (_db_ptr) {
+    _db_ptr->Close();
+    delete _db_ptr;
+  }
+  }

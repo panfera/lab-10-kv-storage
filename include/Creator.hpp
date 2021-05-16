@@ -1,5 +1,5 @@
 //
-// Created by hacker on 5/4/21.
+// Copyright [2021] <pan_fera>
 //
 
 #ifndef TEMPLATE_CREATOR_HPP
