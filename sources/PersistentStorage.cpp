@@ -9,7 +9,6 @@
 #include <string>
 #include "PicoSHA2/picosha2.h"
 
-//using namespace rocksdb;
 using rocksdb::DB;
 using rocksdb::Status;
 using rocksdb::DBOptions;
