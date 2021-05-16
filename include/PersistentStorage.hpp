@@ -26,14 +26,13 @@
 #include <memory>
 #include "Queue.hpp"
 
-using namespace rocksdb;
 namespace logging = boost::log;
 namespace keywords = boost::log::keywords;
 
 struct Element {
   std::string _key;
   std::string _value;
-  ColumnFamilyHandle* _family;
+  rocksdb::ColumnFamilyHandle* _family;
   std::string _hash;
 };
 class PersistentStorage {
@@ -51,7 +50,8 @@ class PersistentStorage {
   void read_db(std::shared_ptr<ThreadPool> ptr);
   void write_db(std::shared_ptr<ThreadPool> ptr);
   void print(std::ostream& out);
-  inline static void read_handle(Iterator* it, ColumnFamilyHandle* i);
+  inline static void read_handle(rocksdb::Iterator* it,
+                                 rocksdb::ColumnFamilyHandle* i);
   inline static void write(Element tmp);
   ~PersistentStorage();
 
@@ -59,14 +59,14 @@ class PersistentStorage {
   size_t _thread_count;
 
  private:
-  DB* _db_from;
-  inline static DB* _db_to;
+  rocksdb::DB* _db_from;
+  inline static rocksdb::DB* _db_to;
 
   inline static Queue<Element> _queue_elements;
   std::vector<std::string> _names;
-  std::vector<ColumnFamilyDescriptor> _descriptors;
-  std::vector<ColumnFamilyHandle*> _handles_from;
-  std::vector<ColumnFamilyHandle*> _handles_to;
+  std::vector<rocksdb::ColumnFamilyDescriptor> _descriptors;
+  std::vector<rocksdb::ColumnFamilyHandle*> _handles_from;
+  std::vector<rocksdb::ColumnFamilyHandle*> _handles_to;
 };
 
 #endif  // INCLUDE_PERSISTENTSTORAGE_HPP_

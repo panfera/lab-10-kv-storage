@@ -11,6 +11,7 @@
 #include <rocksdb/db.h>
 #include "rocksdb/slice.h"
 #include "rocksdb/options.h"
+#include <vector>
 
 using rocksdb::ColumnFamilyDescriptor;
 using rocksdb::ColumnFamilyOptions;

@@ -7,10 +7,9 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-
 #include "PicoSHA2/picosha2.h"
 
-std::mutex _mutex;
+using namespace rocksdb;
 std::atomic<size_t> count = 0;
 PersistentStorage::PersistentStorage(
     const std::string& path_to_db_from, const std::string& path_to_db_to,
