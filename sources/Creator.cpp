@@ -48,8 +48,9 @@ inline std::vector<int> count_num_in_each_column(Creator* creator) {
                 ? random_int(1, sum)
                 : sum;
         out.push_back(rand);
-      } else
+      } else {
         out.push_back(0);
+      }
       ++out[i];
     }
   } else {

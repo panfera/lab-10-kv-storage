@@ -2,8 +2,8 @@
 // Copyright [2021] <pan_fera>
 //
 
-#ifndef TEMPLATE_PERSISTENTSTORAGE_HPP
-#define TEMPLATE_PERSISTENTSTORAGE_HPP
+#ifndef INCLUDE_PERSISTENTSTORAGE_HPP_
+#define INCLUDE_PERSISTENTSTORAGE_HPP_
 
 #include <ThreadPool.h>
 #include <rocksdb/db.h>
@@ -21,7 +21,9 @@
 #include <boost/log/trivial.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/utility/setup/console.hpp>
-
+#include <vector>
+#include <string>
+#include <memory>
 #include "Queue.hpp"
 
 using namespace rocksdb;
@@ -57,8 +59,8 @@ class PersistentStorage {
   size_t _thread_count;
 
  private:
-  rocksdb::DB* _db_from;
-  inline static rocksdb::DB* _db_to;
+  DB* _db_from;
+  inline static DB* _db_to;
 
   inline static Queue<Element> _queue_elements;
   std::vector<std::string> _names;
@@ -67,4 +69,4 @@ class PersistentStorage {
   std::vector<ColumnFamilyHandle*> _handles_to;
 };
 
-#endif  // TEMPLATE_PERSISTENTSTORAGE_HPP
+#endif  // INCLUDE_PERSISTENTSTORAGE_HPP_

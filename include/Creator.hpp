@@ -2,8 +2,8 @@
 // Copyright [2021] <pan_fera>
 //
 
-#ifndef TEMPLATE_CREATOR_HPP
-#define TEMPLATE_CREATOR_HPP
+#ifndef INCLUDE_CREATOR_HPP_
+#define INCLUDE_CREATOR_HPP_
 
 #include <string>
 #include <iomanip>
@@ -34,4 +34,4 @@ class Creator {
   std::vector<std::string> _values;
 };
 
-#endif  // TEMPLATE_CREATOR_HPP
+#endif  // INCLUDE_CREATOR_HPP_
