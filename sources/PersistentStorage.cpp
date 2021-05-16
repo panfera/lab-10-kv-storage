@@ -102,7 +102,7 @@ PersistentStorage::~PersistentStorage() {
 }
 
 inline void PersistentStorage::read_handle(
-    [[maybe_unused]] Iterator* it, [[maybe_unused]] ColumnFamilyHandle* i) {
+    Iterator* it, ColumnFamilyHandle* i) {
   for (it->SeekToFirst(); it->Valid(); it->Next()) {
     std::string hash = picosha2::hash256_hex_string(it->key().ToString() +
                                                     it->value().ToString());

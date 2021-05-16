@@ -50,7 +50,7 @@ inline std::vector<int> count_num_in_each_column(Creator* creator) {
         out.push_back(rand);
       } else {
         out.push_back(0);
-      }
+      } 
       ++out[i];
     }
   } else {
